@@ -1,0 +1,29 @@
+import recu.*
+
+describe "Test del recuperatorio 18/12/2024" {
+    const Luca = new Trabajador (edad = 50)
+    const Mia = new Ingeniero (edad = 50, conocimiento = 6)
+    const Emma = new Ingeniero (edad = 50, conocimiento = 9)
+    const Noah = new Guardia (edad = 50, energia = 120)
+    const Olivia = new Guardia (edad = 50, energia = 180)
+    const Aqua = new Ciudad (nivelTecnologico = 6, trabajadores = [Luca, Mia, Emma, Olivia, Noah])
+  test "Que la delegación experimentada de la ciudad Aqua 1 está conformada por Emma y Olivia." {
+    assert.equals(#{Emma, Olivia}, Aqua.delegacionExperimentada())
+  }
+   test "Cambiar la potencia mínima definida por el consorcio de islas a un valor de 30 y verificar que el valor de defensa inicial de la ciudad es de 2." {
+    Aqua.potenciaMinima(30)
+    assert.equals(2, Aqua.defensaInicial())
+  }
+   test "Verificar que no todos los trabajadores superan el valor de habilidad de 12 unidades." {
+    assert.notThat(Aqua.avanzada())
+  }
+   test "Su capacidad real de defensa es de 58." {
+    assert.equals(58, Aqua.defensaReal())
+  }
+  test "Capacitar a Mia y controlar que ahora el nivel de defensa es de 78." {
+    Mia.entrenar()
+    assert.equals(78, Aqua.defensaReal())
+  }
+  
+}
+
