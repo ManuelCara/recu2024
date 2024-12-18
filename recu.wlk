@@ -111,6 +111,8 @@ class Guardia inherits Trabajador {
   
 }
 
+// no estoy seguro de lo que me estan pidiendo hacer en esta parte
+
 object consorcioDeIslas  {
   var ciudades = []
 
@@ -119,9 +121,5 @@ object consorcioDeIslas  {
   }
   method capacidadActual() {
     ciudades = ciudades.size()
-  }
-  method poblar(ciudad){
-    ciudad.trabajoresMasJovenes()
-    
   }
 }
