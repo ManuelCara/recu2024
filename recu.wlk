@@ -75,8 +75,7 @@ class Ingeniero inherits Trabajador {
   override method experimentado() = conocimiento > 8
 
   method entrenar() {
-    conocimiento = conocimiento + 2 
-    if ( self.experimentado()) 0 else 1 
+    if ( self.experimentado()) conocimiento = conocimiento + 2  else conocimiento = conocimiento + 3 
     }
   override method aporte (ciudad) {
       ciudad.aumentarNivelTecno( conocimiento / 4) 
