@@ -17,7 +17,7 @@ class Ciudad {
   
 
   method defensaInicial() {
-    trabajadores.filter({t=>t.potencia() > 20}).size()
+    trabajadores.filter({t=>t.potencia() > potenciaMinima}).size()
 
   }
 
@@ -49,15 +49,14 @@ class Ciudad {
 
 class Trabajador {
 
-    var edad = 0
+    var property edad = 0
 
     method potencia() = 20
 
     method habilidad() = if (edad > 20 and edad < 40 ) 15 else 10
     
-    method experimentado() {
-      ( edad > 25 and edad <= 35)
-    }
+    method experimentado() =  ( edad > 25 and edad <= 35)
+    
 
     method aporte(ciudad) {
       ciudad.aumentarCapacidad()
@@ -73,12 +72,11 @@ class Ingeniero inherits Trabajador {
 
   override method habilidad() = super() + conocimiento * 3
   
-  override method experimentado() {
-    conocimiento > 8}
+  override method experimentado() = conocimiento > 8
 
   method entrenar() {
     conocimiento = conocimiento + 2 
-    // if ( self.experimentado()) 0 else 1 
+    if ( self.experimentado()) 0 else 1 
     }
   override method aporte (ciudad) {
       ciudad.aumentarNivelTecno( conocimiento / 4) 
@@ -91,16 +89,15 @@ class Ingeniero inherits Trabajador {
 
 class Guardia inherits Trabajador {
   
-  var energia = 110
+  var energia = 100
 
   override method potencia() = super () + (energia * 0.1)
 
-  override method experimentado() {
-    (energia > 150 ) or ( self.potencia()> 50)
-  }
+  override method experimentado() =  (energia > 150 ) or ( self.potencia()> 50)
+  
 
   method entrenar() {
-    if ( ( energia + 10) > 300) energia + 10 else energia
+    if ( ( energia + 10) > 300) energia + 10 else energia = 300
   }
   method defender() {
     energia = energia - self.habilidad()
